@@ -5,12 +5,13 @@ import sys
 
 
 if __name__ == '__main__':
-       p = make_parser()
-       outputfile = sys.argv[1].split('.xml')[0]+'.root'
-       print outputfile
-       rootConversion = rootify.rootifier(outputfile, False)
-       p.setContentHandler( drs4Event.drs4Event(  rootConversion ) )
-       p.parse(sys.argv[1])
-       data.write()
-       data.close()
+  p = make_parser()
+  outputfile = sys.argv[1].split('.xml')[0]+'.root'
+  print outputfile
+  rootConversion = rootify.rootifier(outputfile, False)
+  data = drs4Event.drs4Event(  rootConversion )
+  p.setContentHandler( data )
+  p.parse(sys.argv[1])
+  data.write()
+  data.close()
        
