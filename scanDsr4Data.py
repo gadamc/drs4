@@ -9,9 +9,8 @@ if __name__ == '__main__':
   outputfile = sys.argv[1].split('.xml')[0]+'.root'
   print outputfile
   rootConversion = rootify.rootifier(outputfile, False)
-  data = drs4Event.drs4Event(  rootConversion )
-  p.setContentHandler( data )
+  p.setContentHandler( drs4Event.drs4Event(  rootConversion ) )
   p.parse(sys.argv[1])
-  data.write()
-  data.close()
+  rootConversion.write()
+  rootConversion.close()
        
